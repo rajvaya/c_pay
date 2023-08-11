@@ -1,26 +1,40 @@
+import 'package:c_pay/UI/payment_view.dart';
+import 'package:c_pay/bloc/app_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
   Widget build(BuildContext context) {
+    final AppBloc appBloc = BlocProvider.of<AppBloc>(context);
+
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FilledButton(
-                onPressed: () {
-                },
-            child: Text("Open Cpay")),
-          ],
-        ),
+      body: BlocConsumer<AppBloc, AppState>(
+        listenWhen: (prev , current) => current is AppActionState,
+        listener: (context, state) {
+         if(state is NavigateToPaymentViewActionState) {
+           Navigator.push(
+             context,
+             MaterialPageRoute(builder: (context) => const PaymentView()),
+           );
+         }
+        },
+        builder: (context, state) {
+          return Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FilledButton(
+                    onPressed: () {
+                      appBloc.add(InitiatePaymentEvent());
+                    },
+                    child: Text("Open Cpay")),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
