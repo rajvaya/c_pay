@@ -1,11 +1,10 @@
 import 'package:c_pay/UI/Widgets/amount_input.dart';
-import 'package:c_pay/UI/upi_view.dart';
+import 'package:c_pay/UI/UPI/upi_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/app_bloc.dart';
-import 'UPI/upi_view.dart';
 import 'Widgets/payment_details.dart';
 
 class PaymentView extends StatefulWidget {
