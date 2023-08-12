@@ -1,11 +1,12 @@
-import 'package:c_pay/UI/Confirmation/confirmation_view.dart';
-import 'package:c_pay/UI/UPI/Widgets/upi_pin_input.dart';
-import 'package:c_pay/UI/UPI/Widgets/upi_header.dart';
-import 'package:c_pay/UI/UPI/bloc/upi_bloc.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../Confirmation/confirmation_view.dart';
+import 'Widgets/upi_header.dart';
 import 'Widgets/upi_keyboard.dart';
+import 'Widgets/upi_pin_input.dart';
+import 'bloc/upi_bloc.dart';
 
 class UpiView extends StatefulWidget {
   const UpiView({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _UpiViewState extends State<UpiView> {
             }
           },
           builder: (context, state) {
-            return SafeArea(
+            return const SafeArea(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [

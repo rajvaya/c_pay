@@ -1,7 +1,9 @@
-import 'package:c_pay/UI/payment_view.dart';
-import 'package:c_pay/bloc/app_bloc.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../Payment/payment_view.dart';
+import 'bloc/app_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

@@ -58,7 +58,7 @@ class _ConfirmationViewState extends State<ConfirmationView> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-           PaymentDetails(),
+           TransactionDetails(),
           ],
         ),
       ),
@@ -66,8 +66,8 @@ class _ConfirmationViewState extends State<ConfirmationView> {
   }
 }
 
-class PaymentDetails extends StatelessWidget {
-  const PaymentDetails({Key? key}) : super(key: key);
+class TransactionDetails extends StatelessWidget {
+  const TransactionDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

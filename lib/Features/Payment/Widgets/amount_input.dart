@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/app_bloc.dart';
+import '../bloc/payment_bloc.dart';
+
 
 class AmountInput extends StatelessWidget {
   final TextEditingController controller;
@@ -10,7 +11,7 @@ class AmountInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppBloc appBloc = BlocProvider.of<AppBloc>(context);
+    final PaymentBloc paymentBloc = BlocProvider.of<PaymentBloc>(context);
     return IntrinsicWidth(
       child: TextField(
         keyboardType:  const TextInputType.numberWithOptions(
@@ -41,7 +42,7 @@ class AmountInput extends StatelessWidget {
           isCollapsed: true,
         ),
         onTap: (){
-          appBloc.add(AmountInputFocused());
+          paymentBloc.add(AmountInputFocused());
         },
 
       ),

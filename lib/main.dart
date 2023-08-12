@@ -1,8 +1,8 @@
-import 'package:c_pay/home.dart';
+import 'package:c_pay/Features/Home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/app_bloc.dart';
+import 'Features/Home/bloc/app_bloc.dart';
 
 void main() {
   runApp(const MyApp());
