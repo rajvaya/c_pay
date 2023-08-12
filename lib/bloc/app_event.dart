@@ -5,6 +5,8 @@ abstract class AppEvent {}
 
 class InitiatePaymentEvent extends AppEvent{}
 class InitiateUpi extends AppEvent{}
-class VerifyUpiPin extends AppEvent{}
-class FloatingButtonPressed extends AppEvent{}
-class PTP extends AppEvent{}
+class AmountConfirmedButtonPressed extends AppEvent{
+  final String amount;
+  AmountConfirmedButtonPressed(this.amount);
+}
+class AmountInputFocused extends AppEvent{}

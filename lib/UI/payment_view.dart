@@ -1,19 +1,46 @@
 import 'package:c_pay/UI/Widgets/amount_input.dart';
+import 'package:c_pay/UI/upi_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/app_bloc.dart';
+import 'UPI/upi_view.dart';
 import 'Widgets/payment_details.dart';
 
-class PaymentView extends StatelessWidget {
+class PaymentView extends StatefulWidget {
   const PaymentView({Key? key}) : super(key: key);
+
+  @override
+  State<PaymentView> createState() => _PaymentViewState();
+}
+
+class _PaymentViewState extends State<PaymentView> {
+
+  final amountController = TextEditingController();
+
+
+  @override
+  void dispose() {
+    amountController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     final AppBloc appBloc = BlocProvider.of<AppBloc>(context);
 
-    return BlocBuilder<AppBloc, AppState>(
+    return BlocConsumer<AppBloc, AppState>(
+      listenWhen: (prev , current) => current is AppActionState,
+      listener: (context,state){
+        if(state is NavigateToUpiViewActionState) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) =>  UpiView()),
+          );
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Colors.blueAccent,
@@ -39,10 +66,10 @@ class PaymentView extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const PaymentDetails(),
-                const AmountInput(),
+                AmountInput(controller: amountController),
                 const Expanded(child: SizedBox()),
             Visibility(
-              visible: appBloc.state is UserInputDoneState,
+              visible: appBloc.state is AmountConfirmedState,
                 child:
                 Container(
                   width: double.infinity,
@@ -86,7 +113,7 @@ class PaymentView extends StatelessWidget {
                       const SizedBox(height: 32),
                       MaterialButton(
                         onPressed: () {
-                        appBloc.add(PTP());
+                          appBloc.add(InitiateUpi());
                         },
                         color: Colors.blueAccent,
                         shape: RoundedRectangleBorder(
@@ -134,16 +161,17 @@ class PaymentView extends StatelessWidget {
             ),
           ),
           floatingActionButton: Visibility(
-            visible: appBloc.state is UserInputState,
+            visible: appBloc.state is! AmountConfirmedState,
             child: FloatingActionButton(
               onPressed: () {
-                appBloc.add(FloatingButtonPressed());
+              appBloc.add(AmountConfirmedButtonPressed(amountController.text));
               },
               child: const Icon(Icons.arrow_forward),
             ),
           ),
         );
       },
+
     );
   }
 }

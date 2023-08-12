@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/app_bloc.dart';
 
 class AmountInput extends StatelessWidget {
-  const AmountInput({Key? key}) : super(key: key);
+  final TextEditingController controller;
+  const AmountInput({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final AppBloc appBloc = BlocProvider.of<AppBloc>(context);
     return IntrinsicWidth(
       child: TextField(
-        keyboardType: TextInputType.number,
+        keyboardType:  const TextInputType.numberWithOptions(
+          decimal: true,
+          signed: false,
+        ),
+        controller: controller,
         autofocus: true,
         textAlign: TextAlign.center,
         textAlignVertical: TextAlignVertical.center,
@@ -31,6 +40,9 @@ class AmountInput extends StatelessWidget {
             border: InputBorder.none,
           isCollapsed: true,
         ),
+        onTap: (){
+          appBloc.add(AmountInputFocused());
+        },
 
       ),
     );
