@@ -27,6 +27,7 @@ class UpiBloc extends Bloc<UpiEvent, UpiState> {
       emit(DoneKeyPressedState(upiPin,showPin));
     }
     else{
+      print(upiPin);
       emit(NumberKeyPressedState(upiPin + event.upiKey.numberAsString,showPin));
     }
   }

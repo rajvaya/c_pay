@@ -10,31 +10,29 @@ class UpiKeyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
-      color:  const Color(0xFFF0F0F1),
-      child: GridView.count(crossAxisCount: 3,
-        shrinkWrap: true,
-        padding: EdgeInsets.zero,
-        childAspectRatio: 1.8,
-        physics: const NeverScrollableScrollPhysics(),
-        // children: List.generate(12, (index) => NumberButton(upiKey: UpiKeyboardKey.back)),
-        children: UpiKeyboardKey.values.map((key) => NumberButton(upiKey: key)).toList() ,
-      ),
+    return GridView.count(crossAxisCount: 3,
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      childAspectRatio: 1.8,
+      physics: const NeverScrollableScrollPhysics(),
+      // children: List.generate(12, (index) => NumberButton(upiKey: UpiKeyboardKey.back)),
+      children: UpiKeyboardKey.values.map((key) => KeyButton(upiKey: key)).toList() ,
     );
   }
 }
 
 
-class NumberButton extends StatelessWidget {
+class KeyButton extends StatelessWidget {
   final UpiKeyboardKey upiKey;
-  NumberButton({required this.upiKey});
+  const KeyButton({super.key, required this.upiKey});
   @override
   Widget build(BuildContext context) {
     final UpiBloc upiBloc = BlocProvider.of<UpiBloc>(context);
-
     return Material(
+      color:  const Color(0xFFF0F0F1),
       child: InkWell(
         onTap: () {
+          print(upiKey.numberAsString);
           upiBloc.add(KeyboardButtonClicked(upiKey));
         },
         child: Center(
@@ -47,7 +45,6 @@ class NumberButton extends StatelessWidget {
                   color: Color(0xFF1A317F),
                 );
               }
-
               if  (upiKey == UpiKeyboardKey.done) {
                 return const Icon(
                   Icons.check_circle_rounded,
@@ -61,7 +58,6 @@ class NumberButton extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               );
-
             }
           ),
         ),
