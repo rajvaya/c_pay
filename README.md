@@ -1,16 +1,16 @@
 # c_pay
 
-A new Flutter project.
 
-## Getting Started
+## Google Pay Clone for Curie Money Flutter Assignment using bloc
 
-This project is a starting point for a Flutter application.
+demo video
 
-A few resources to get you started if this is your first Flutter project:
+https://github.com/rajvaya/c_pay/assets/28836300/3fd2b34c-0981-4a8a-8373-ca1861dc65fa
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+download the APK [here](https://github.com/rajvaya/c_pay/blob/main/assets/app-release.apk) 
+
+
+
+
