@@ -35,7 +35,7 @@ class _PaymentViewState extends State<PaymentView> {
           if (state is NavigateToUpiViewActionState) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => UpiView()),
+              MaterialPageRoute(builder: (context) => UpiView(amount: amountController.text,)),
             );
           }
         },
@@ -76,8 +76,10 @@ class _PaymentViewState extends State<PaymentView> {
               visible: paymentBloc.state is! AmountConfirmedState,
               child: FloatingActionButton(
                 onPressed: () {
+                  if(amountController.text.length > 0){
                   paymentBloc
                       .add(AmountConfirmedButtonPressed(amountController.text));
+                  }
                 },
                 child: const Icon(Icons.arrow_forward),
               ),

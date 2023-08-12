@@ -9,11 +9,9 @@ part 'payment_state.dart';
 
 class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   PaymentBloc() : super(PaymentInitial()) {
-    on<PaymentEvent>((event, emit) {
-      on<AmountConfirmedButtonPressed>(doAmountConfirmation);
-      on<AmountInputFocused>(makeUserAmountEditable);
-      on<InitiateUpi>(navigateToUpiView);
-    });
+    on<AmountConfirmedButtonPressed>(doAmountConfirmation);
+    on<AmountInputFocused>(makeUserAmountEditable);
+    on<InitiateUpi>(navigateToUpiView);
   }
 
 

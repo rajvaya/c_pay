@@ -4,9 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../enums.dart';
 import '../bloc/upi_bloc.dart';
 
-class UpiKeyboard extends StatelessWidget {
+class UpiKeyboard extends StatefulWidget {
   const UpiKeyboard({Key? key}) : super(key: key);
 
+  @override
+  State<UpiKeyboard> createState() => _UpiKeyboardState();
+}
+
+class _UpiKeyboardState extends State<UpiKeyboard> {
   @override
   Widget build(BuildContext context) {
 

@@ -3,26 +3,26 @@ part of 'upi_bloc.dart';
 @immutable
 abstract class UpiState {
   final String upiPin;
-  final bool showPin;
-  const UpiState(this.upiPin, this.showPin);}
-
+  final bool isPinVisiable;
+  UpiState(this.upiPin, this.isPinVisiable);
+}
 
 class UpiInitial extends UpiState {
-  const UpiInitial(super.upiPin, super.showPin);
-
+  UpiInitial(String upiPin, bool showPin) : super(upiPin, showPin);
 }
+
 class NumberKeyPressedState extends UpiState {
-  const NumberKeyPressedState(super.upiPin, super.showPin);
+  NumberKeyPressedState(String upiPin, bool showPin) : super(upiPin, showPin);
 }
+
 class BackKeyPressedState extends UpiState {
-  const BackKeyPressedState(super.upiPin, super.showPin);
+  BackKeyPressedState(String upiPin, bool showPin) : super(upiPin, showPin);
 }
+
 class DoneKeyPressedState extends UpiState {
-  const DoneKeyPressedState(super.upiPin, super.showPin);
+  DoneKeyPressedState(String upiPin, bool showPin) : super(upiPin, showPin);
 }
- class VisibilityToggleState extends UpiState {
-  const VisibilityToggleState(super.upiPin, super.showPin);
- }
 
-
-
+class VisibilityToggleState extends UpiState {
+  VisibilityToggleState(String upiPin, bool showPin) : super(upiPin, showPin);
+}

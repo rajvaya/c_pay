@@ -32,7 +32,7 @@ class AmountInput extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: Colors.white38,
             ),
-            prefixText: '\₹',
+            prefixText: '₹',
             prefixStyle: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.w400,

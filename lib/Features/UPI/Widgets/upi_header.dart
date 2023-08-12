@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class UpiHeader extends StatelessWidget {
+  final String amount;
   const UpiHeader({
-    super.key,
+    super.key, required this.amount,
   });
 
   @override
@@ -32,7 +33,7 @@ class UpiHeader extends StatelessWidget {
         ),
         Container(
           color: const Color(0xFF1A317F),
-          child: const Padding(
+          child:  Padding(
             padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,7 +47,7 @@ class UpiHeader extends StatelessWidget {
                       color: Colors.white),
                 ),
                 Text(
-                  "₹ 69.00",
+                  "₹ ${ amount}",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,

@@ -15,9 +15,7 @@ class UpiBloc extends Bloc<UpiEvent, UpiState> {
 
   FutureOr<void> handlerKeyPress(KeyboardButtonClicked event, Emitter<UpiState> emit) {
     var upiPin = state.upiPin;
-    var showPin = state.showPin;
-
-
+    var showPin = state.isPinVisiable;
     if(event.upiKey == UpiKeyboardKey.back) {
       if(upiPin.isNotEmpty){
       emit(BackKeyPressedState(upiPin.substring(0,upiPin.length -1),showPin));
@@ -27,12 +25,11 @@ class UpiBloc extends Bloc<UpiEvent, UpiState> {
       emit(DoneKeyPressedState(upiPin,showPin));
     }
     else{
-      print(upiPin);
       emit(NumberKeyPressedState(upiPin + event.upiKey.numberAsString,showPin));
     }
   }
 
   FutureOr<void> handlerVisibilityToggle(VisibilityToggleClicked event, Emitter<UpiState> emit) {
-    emit(VisibilityToggleState(state.upiPin,!state.showPin));
+    emit(VisibilityToggleState(state.upiPin,!state.isPinVisiable));
   }
 }

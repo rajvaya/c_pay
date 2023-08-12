@@ -3,9 +3,11 @@ part of 'app_bloc.dart';
 @immutable
 abstract class AppState {}
 
-class AppInitial extends AppState {}
+class AppInitial extends AppState {
+  final int pinSize;
+  AppInitial(this.pinSize);
+}
 
-abstract class AppActionState extends AppState {}
-
-class NavigateToPaymentViewActionState extends AppActionState {}
+class NavigateToPaymentViewActionState extends AppState {}
+class PinToggled extends AppState{}
 

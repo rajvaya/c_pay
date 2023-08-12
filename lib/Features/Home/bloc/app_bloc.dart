@@ -8,7 +8,8 @@ part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc() : super(AppInitial()) {
+  int _selectedPinSize = 4;
+  AppBloc() : super(AppInitial(4)) {
     on<InitiatePaymentEvent>(navigateToPaymentView);
   }
 
@@ -17,4 +18,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     emit(NavigateToPaymentViewActionState());
   }
 
+  void setPinSize(int size) {
+    _selectedPinSize = size;
+    emit(PinToggled());
+  }
+
+  int getPinSize() => _selectedPinSize;
 }

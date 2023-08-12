@@ -39,7 +39,7 @@ class PaymentBottomSheet extends StatelessWidget {
                   ),
                   SizedBox(width: 8),
                   Text(
-                    'Bank Name',
+                    'Cuire Bank',
                     style: TextStyle(
                       color: Colors.black87,
                       fontSize: 20,
@@ -85,14 +85,14 @@ class PaymentBottomSheet extends StatelessWidget {
                     ),
                     children: [
                       TextSpan(
-                        text: 'IN PARTNERSHIP WITH ',
+                        text: 'IN PARTNERSHIP WITH  ',
                       ),
                       WidgetSpan(
-                        child: Icon(Icons.square,
+                        child: Icon(Icons.currency_rupee,
                             color: Colors.black, size: 12),
                       ),
                       TextSpan(
-                        text: 'Curie UPI',
+                        text: ' Curie UPI',
                       ),
                     ],
                   ),

@@ -36,7 +36,7 @@ class PaymentDetails extends StatelessWidget {
           ],
         ),
         SizedBox(height: 8),
-        Text("Payment to red bus \n (HireMe@CuireBank)" , style: TextStyle(
+        Text("Payment to Curie Money \n (HireMe@CuireBank)" , style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w500,
           fontSize: 16
